@@ -8,8 +8,8 @@ import javax.persistence.*;
 @Entity
 @Getter
 @Setter
-@Table(name="dado_basico")
-public class DadoBasico {
+@Table(name="dados_basicos")
+public class DadosBasicos {
 
 
     @Id
