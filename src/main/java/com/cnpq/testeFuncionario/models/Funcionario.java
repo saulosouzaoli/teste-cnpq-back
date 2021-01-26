@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -33,6 +34,10 @@ public class Funcionario  {
     @ManyToOne
     @JoinColumn(name = "id_funcao")
     private Funcao funcao;
+
+    @Temporal(value = TemporalType.TIMESTAMP)
+    @Column(name = "data_exclusao")
+    private Date dataExclusao;
 
     @JsonIgnore
     @OneToMany(mappedBy = "funcionario", fetch = FetchType.LAZY,cascade = CascadeType.REMOVE)

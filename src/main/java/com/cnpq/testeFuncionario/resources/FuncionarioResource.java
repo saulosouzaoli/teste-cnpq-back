@@ -19,7 +19,7 @@ public class FuncionarioResource extends GenericResource<Funcionario,Long, Funci
 
     @GetMapping(path = "buscar")
     public Page<Funcionario> buscar(@RequestParam(value = "pagina", defaultValue = "0") Integer page,
-                                                   @RequestParam(value = "linhasPorPagina", defaultValue = "10") Integer linesPerPage,
+                                                   @RequestParam(value = "linhasPorPagina", defaultValue = "5") Integer linesPerPage,
                                                    @RequestParam(value = "ordernarPor", defaultValue = "id") String orderBy,
                                                    @RequestParam(value = "direcao", defaultValue = "ASC") String direction){
         return this.getService().buscar(page,linesPerPage,orderBy,direction);
