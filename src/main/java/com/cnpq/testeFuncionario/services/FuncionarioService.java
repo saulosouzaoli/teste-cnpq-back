@@ -1,14 +1,9 @@
 package com.cnpq.testeFuncionario.services;
 
 import com.cnpq.testeFuncionario.models.Funcionario;
-import com.cnpq.testeFuncionario.models.FuncionarioDTO;
-
-import java.util.List;
+import org.springframework.data.domain.Page;
 
 public interface FuncionarioService extends GenericService<Funcionario,Long> {
 
-    public List<FuncionarioDTO> buscarTodosDTO();
-
-
-    public FuncionarioDTO buscarDTOPorId(Long id);
+    Page<Funcionario> buscar(Integer page, Integer linesPerPage, String orderBy, String direction);
 }

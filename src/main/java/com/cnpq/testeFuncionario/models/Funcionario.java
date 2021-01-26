@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -26,14 +27,17 @@ public class Funcionario  {
     @JoinColumn(name = "id_departamento")
     private Departamento departamento;
 
-
-    @OneToOne(cascade = CascadeType.REMOVE)
-    @JoinColumn(name = "id_dado_basico", referencedColumnName = "id")
-    private DadoBasico dadoBasico;
+    @JsonIgnore
+    @OneToOne(mappedBy = "funcionario")
+    private DadosBasicos DadosBasicos;
 
     @ManyToOne
     @JoinColumn(name = "id_funcao")
     private Funcao funcao;
+
+    @Temporal(value = TemporalType.TIMESTAMP)
+    @Column(name = "data_exclusao")
+    private Date dataExclusao;
 
     @JsonIgnore
     @OneToMany(mappedBy = "funcionario", fetch = FetchType.LAZY,cascade = CascadeType.REMOVE)
@@ -46,5 +50,9 @@ public class Funcionario  {
     @JsonIgnore
     @OneToMany(mappedBy = "funcionario", fetch = FetchType.LAZY,cascade = CascadeType.REMOVE)
     private List<Endereco> enderecos;
+    public Funcionario(){}
 
+    public Funcionario(Long idFuncionario) {
+        this.id = idFuncionario;
+    }
 }

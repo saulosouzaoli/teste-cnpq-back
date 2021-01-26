@@ -25,26 +25,23 @@ public class RegistroPonto   {
     @Column(name = "data", nullable = false)
     private Date data;
 
-    @Column(name = "tipo_registro_ponto",nullable = false)
-    private Integer valorTipoRegistroPonto;
-
-    @Transient
-    private TipoRegistroPontoEnum tipoRegistroPonto;
+    @Temporal(value = TemporalType.TIMESTAMP)
+    @Column(name = "entrada1", nullable = false)
+    private Date entrada1;
 
 
-    @PostLoad
-    void fillTransient() {
-        if (valorTipoRegistroPonto!=null) {
-            this.tipoRegistroPonto = TipoRegistroPontoEnum.lookup(valorTipoRegistroPonto);
-        }
-    }
+    @Temporal(value = TemporalType.TIMESTAMP)
+    @Column(name = "entrada2", nullable = false)
+    private Date entrada2;
 
-    @PrePersist
-    void fillPersistent() {
-        if (tipoRegistroPonto != null) {
-            this.valorTipoRegistroPonto = tipoRegistroPonto.getCodigo();
-        }
-    }
+    @Temporal(value = TemporalType.TIMESTAMP)
+    @Column(name = "saida1", nullable = false)
+    private Date saida1;
+
+
+    @Temporal(value = TemporalType.TIMESTAMP)
+    @Column(name = "saida2", nullable = false)
+    private Date saida2;
 
 
 }
