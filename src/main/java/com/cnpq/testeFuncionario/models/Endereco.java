@@ -4,94 +4,42 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+
 @Getter
 @Setter
+@Entity
 @Table(name="endereco")
 public class Endereco {
 
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Long id;
+    private Long id;
 
     @ManyToOne
     @JoinColumn(name = "id_funcionario",nullable = false)
     private Funcionario funcionario;
 
     @Column(name = "descricao",length = 100)
-    public String descricao;
+    private String descricao;
 
     @Column(name = "endereco",nullable = false)
-    public String endereco;
+    private String endereco;
 
     @Column(name = "complemento")
-    public String complemento;
+    private String complemento;
 
     @Column(name = "cep",length = 8,nullable = false)
-    public String cep;
+    private String cep;
 
     @Column(name = "bairro",length = 100,nullable = false)
-    public String bairro;
+    private String bairro;
 
     @Column(name = "cidade",length = 100,nullable = false)
-    public String cidade;
+    private String cidade;
 
     @Column(name = "uf",length = 2,nullable = false)
-    public String uf;
+    private String uf;
 
-    public Long getId() {
-        return id;
-    }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Funcionario getFuncionario() {
-        return funcionario;
-    }
-
-    public void setFuncionario(Funcionario funcionario) {
-        this.funcionario = funcionario;
-    }
-
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
-
-    public String getEndereco() {
-        return endereco;
-    }
-
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
-    }
-
-    public String getComplemento() {
-        return complemento;
-    }
-
-    public void setComplemento(String complemento) {
-        this.complemento = complemento;
-    }
-
-    public String getBairro() {
-        return bairro;
-    }
-
-    public void setBairro(String bairro) {
-        this.bairro = bairro;
-    }
-
-    public String getCidade() {
-        return cidade;
-    }
-
-    public void setCidade(String cidade) {
-        this.cidade = cidade;
-    }
 }

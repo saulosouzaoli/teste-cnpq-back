@@ -1,5 +1,8 @@
-package com.cnpq.testeFuncionario.models;
+package com.cnpq.testeFuncionario.models.dto;
 
+import com.cnpq.testeFuncionario.models.Departamento;
+import com.cnpq.testeFuncionario.models.Funcao;
+import com.cnpq.testeFuncionario.models.Funcionario;
 import lombok.Getter;
 import lombok.Setter;
 

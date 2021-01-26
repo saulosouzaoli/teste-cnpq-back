@@ -1,17 +1,21 @@
 package com.cnpq.testeFuncionario.resources;
 
-import com.cnpq.testeFuncionario.models.Funcao;
-import com.cnpq.testeFuncionario.services.FuncaoService;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.cnpq.testeFuncionario.models.DadosBasicos;
+import com.cnpq.testeFuncionario.models.Endereco;
+import com.cnpq.testeFuncionario.services.EnderecoService;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("funcao")
-public class FuncaoResource extends GenericResource<Funcao,Long, FuncaoService> {
+@RequestMapping("endereco")
+public class EnderecoResource extends GenericResource<Endereco,Long, EnderecoService> {
 
 
-    public FuncaoResource(FuncaoService service) {
+    public EnderecoResource(EnderecoService service) {
         super(service);
     }
 
+    @GetMapping(path = "buscarPorFuncionario/{id}")
+    public Endereco buscarPorFuncionario(@PathVariable("id")Long idFuncionario){
+        return this.getService().buscarPorFuncionario(idFuncionario);
+    }
 }

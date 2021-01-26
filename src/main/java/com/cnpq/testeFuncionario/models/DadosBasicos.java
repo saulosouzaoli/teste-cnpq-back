@@ -20,7 +20,7 @@ public class DadosBasicos {
     @Column(name = "nome",length = 255,nullable = false)
     private String nome;
 
-    @Column(name = "cpf",nullable = false,length = 11)
+    @Column(name = "cpf",nullable = false,length = 14)
     private String cpf;
 
     @Column(name="rg",nullable = false,length = 15)
@@ -33,7 +33,9 @@ public class DadosBasicos {
     private String nomeMae;
 
 
-    @OneToOne(mappedBy = "dadoBasico")
+
+    @OneToOne(cascade = CascadeType.REMOVE)
+    @JoinColumn(name = "id_funcionario", referencedColumnName = "id")
     private Funcionario funcionario;
 
 

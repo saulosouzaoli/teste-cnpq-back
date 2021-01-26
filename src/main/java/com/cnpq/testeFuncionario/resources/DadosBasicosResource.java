@@ -1,12 +1,13 @@
 package com.cnpq.testeFuncionario.resources;
 
 import com.cnpq.testeFuncionario.models.DadosBasicos;
+import com.cnpq.testeFuncionario.models.Funcionario;
 import com.cnpq.testeFuncionario.services.DadosBasicosService;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.data.domain.Page;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("dado-basico")
+@RequestMapping("dados-basicos")
 public class DadosBasicosResource extends GenericResource<DadosBasicos,Long, DadosBasicosService> {
 
 
@@ -14,4 +15,8 @@ public class DadosBasicosResource extends GenericResource<DadosBasicos,Long, Dad
         super(service);
     }
 
+    @GetMapping(path = "buscarPorFuncionario/{id}")
+    public DadosBasicos buscarPorFuncionario(@PathVariable("id") Long idFuncionario){
+        return this.getService().buscarPorFuncionario(idFuncionario);
+    }
 }

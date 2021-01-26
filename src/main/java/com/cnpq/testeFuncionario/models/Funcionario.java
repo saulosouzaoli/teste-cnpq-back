@@ -26,10 +26,9 @@ public class Funcionario  {
     @JoinColumn(name = "id_departamento")
     private Departamento departamento;
 
-
-    @OneToOne(cascade = CascadeType.REMOVE)
-    @JoinColumn(name = "id_dado_basico", referencedColumnName = "id")
-    private DadoBasico dadoBasico;
+    @JsonIgnore
+    @OneToOne(mappedBy = "funcionario")
+    private DadosBasicos DadosBasicos;
 
     @ManyToOne
     @JoinColumn(name = "id_funcao")
@@ -46,5 +45,9 @@ public class Funcionario  {
     @JsonIgnore
     @OneToMany(mappedBy = "funcionario", fetch = FetchType.LAZY,cascade = CascadeType.REMOVE)
     private List<Endereco> enderecos;
+    public Funcionario(){}
 
+    public Funcionario(Long idFuncionario) {
+        this.id = idFuncionario;
+    }
 }

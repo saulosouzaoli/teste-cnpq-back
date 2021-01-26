@@ -1,6 +1,7 @@
 package com.cnpq.testeFuncionario.services;
 
-import com.cnpq.testeFuncionario.models.Funcao;
+import com.cnpq.testeFuncionario.models.Endereco;
 
-public interface FuncaoService  extends GenericService<Funcao,Long> {
+public interface EnderecoService extends GenericService<Endereco,Long> {
+    Endereco buscarPorFuncionario(Long idFuncionario);
 }
